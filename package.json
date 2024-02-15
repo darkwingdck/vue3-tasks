@@ -1,0 +1,20 @@
+{
+  "name": "vue3-tasks",
+  "version": "0.0.1",
+  "description": "Vue3 & JS tasks",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.70.0",
+    "vite": "^5.1.2"
+  },
+  "dependencies": {
+    "vue": "^3.4.19",
+    "vuex": "^4.1.0"
+  }
+}
