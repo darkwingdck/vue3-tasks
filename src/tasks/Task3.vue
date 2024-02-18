@@ -8,7 +8,7 @@
 
   <div class="game">
     <div class="balance">
-      <strong>Current balance:</strong> ${{ clickerGame.balance }}
+      <strong>Current balance:</strong> ${{ gameState.balance }}
     </div>
 
     <div class="actions">
@@ -21,10 +21,10 @@
       </MyButton>
 
       <div
-        v-if="showCustomAmountInput"
+        v-if="gameState.showCustomAmountInput"
         class="custom-top-up"
       >
-        Add $<input v-model="customAmount" />
+        Add $<input v-model="gameState.customAmount" />
         <MyButton @click="topUpBalanceByCustomAmount">
           Add
         </MyButton>
@@ -40,31 +40,31 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import MyButton from "../components/MyButton.vue"
 
-// This is a game state
+const DEFAULT_BALANCE = 100
+const DEFAULT_CUSTOM_AMOUNT = 50
+
 const clickerGame = {
-  balance: 100
+  balance: DEFAULT_BALANCE,
+  customAmount: DEFAULT_CUSTOM_AMOUNT,
+  showCustomAmountInput: false,
 }
 const gameState = reactive(clickerGame)
-// This function adds money to the player's balance
+
 const topUpBalance = (amount) => {
-  clickerGame.balance += amount
+  gameState.balance += amount
 }
 
-// We have a custom input for non-predefined top-ups, too!
-let customAmount = ref(50)
-let showCustomAmountInput = ref(false)
-// When we press "Add custom", we show an input
 const onCustomAmountButtonCLick = () => {
-  showCustomAmountInput = true
+  gameState.showCustomAmountInput = true
 }
-// Adds the amount from the input to the player's balance
+
 const topUpBalanceByCustomAmount = () => {
-  topUpBalance(customAmount)
-  customAmount = 50
-  showCustomAmountInput = false
+  topUpBalance(parseInt(gameState.customAmount))
+  gameState.customAmount = DEFAULT_CUSTOM_AMOUNT
+  gameState.showCustomAmountInput = false
 }
 </script>
 
