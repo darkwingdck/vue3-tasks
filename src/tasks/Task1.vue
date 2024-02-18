@@ -45,7 +45,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import { disabledSortProps } from '../constants'
+import { DISABLED_SORT_PROPS } from '../constants'
 
 const store = useStore()
 const users = store.state.users
@@ -66,6 +66,8 @@ const headers = [
 const sortBy = ref(headers[0].prop)
 const sortDesc = ref(false)
 const onSort = (prop) => {
+  if (DISABLED_SORT_PROPS.includes(prop)) return;
+
   if (sortBy.value === prop) {
     sortDesc.value = !sortDesc.value
   } else {
@@ -76,7 +78,7 @@ const onSort = (prop) => {
 }
 const headerText = (header) => {
   let text = header.text;
-  if (disabledSortProps.includes(header.prop)) return text;
+  if (DISABLED_SORT_PROPS.includes(header.prop)) return text;
 
   if (sortBy.value === header.prop) {
     text += (sortDesc.value ? "⇧" : "⇩")

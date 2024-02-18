@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-import { disabledSortProps } from './constants'
+import { DISABLED_SORT_PROPS } from './constants'
 
 import storeData from './storeData.json'
 
@@ -19,7 +19,7 @@ export default () => createStore({
 
   actions: {
     sortUsers({ state, commit }, { sortBy, sortDesc }) {
-      if (disabledSortProps.includes(sortBy)) return;
+      if (DISABLED_SORT_PROPS.includes(sortBy)) return;
 
       const sortedUsers = state.users.sort(
         (user1, user2) => {
