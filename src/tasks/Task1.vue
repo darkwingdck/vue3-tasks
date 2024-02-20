@@ -78,7 +78,6 @@ const onSort = (prop) => {
   }
   store.dispatch('sortUsers', { sortBy: sortBy.value, sortDesc: sortDesc.value})
 }
-
 const headerText = (header) => {
   let text = header.text;
   if (DISABLED_SORT_PROPS.includes(header.prop)) return text;
