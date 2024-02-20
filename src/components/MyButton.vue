@@ -35,7 +35,6 @@ const rippleStyles = reactive({
 
 const emit = defineEmits(['click'])
 
-
 const handlePress = async (event) => {
   updateRippleStyles(event)
   pressed.value = false
@@ -45,14 +44,14 @@ const handlePress = async (event) => {
 }
 
 const updateRippleStyles = (event) => {
-  const button = event.currentTarget;
-  const diameter = Math.max(button.clientWidth, button.clientHeight);
-  const radius = diameter / 2;
+  const button = event.currentTarget
+  const diameter = Math.max(button.clientWidth, button.clientHeight)
+  const radius = diameter / 2
   
   // handling enter and space events
   if (!event.clientX || !event.clientY) {
-    event.clientX = button.offsetLeft + button.clientWidth / 2;
-    event.clientY = button.offsetTop + button.clientHeight / 2;
+    event.clientX = button.offsetLeft + button.clientWidth / 2
+    event.clientY = button.offsetTop + button.clientHeight / 2
   }
 
   rippleStyles.width = `${diameter}px`
