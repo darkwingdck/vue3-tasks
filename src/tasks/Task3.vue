@@ -42,9 +42,7 @@
 <script setup>
 import { reactive } from 'vue'
 import MyButton from "../components/MyButton.vue"
-
-const DEFAULT_BALANCE = 100
-const DEFAULT_CUSTOM_AMOUNT = 50
+import { DEFAULT_BALANCE, DEFAULT_CUSTOM_AMOUNT } from '../constants'
 
 const clickerGame = {
   balance: DEFAULT_BALANCE,

@@ -64,7 +64,9 @@ const headers = [
 ]
 
 const sortBy = ref(headers[0].prop)
+
 const sortDesc = ref(false)
+
 const onSort = (prop) => {
   if (DISABLED_SORT_PROPS.includes(prop)) return;
 
